@@ -28,13 +28,29 @@
         };
         //コンポーネントは必ず大文字から始める
         const App = () => {
+
+          const menus = [
+            {name: '牛丼', price: 400},
+            {name: 'カレー', price: 500},
+            {name: 'サラダ', price: 300},
+          ];
+
+          const menuItems = menus.map((menu) => {
+            return (
+              <Menu 
+              name={menu.name} 
+              price={menu.price} 
+              />
+            );
+          });
+
+
+
           return (
             <>
               <h1>メニュー</h1>
               <ul className="menus">
-                <Menu name="牛丼" price="400"/>
-                <Menu name="カレー" price="500"/>
-                <Menu name="サラダ" price="300"/>
+                {menuItems}
               </ul>
               <p >合計： 0円</p>
             </>
