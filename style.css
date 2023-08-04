@@ -24,6 +24,13 @@ h1 {
   list-style: none;
 }
 
+.menus button {
+  margin-right: 8px;
+  width: 24px;
+
+
+}
+
 .menus > li {
   border: 1px solid #ccc;
   padding: 8px;
