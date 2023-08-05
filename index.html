@@ -26,6 +26,9 @@
 
           const increment = () => {
             setCount(count +1);
+            //setCount　直前で更新された値を即座に使用したい場合
+            setCount((prevCount) => {return prevCount +1});
+            setCount((prevCount) => {return prevCount +1});
           };
 
           //decrement()の場合は、関数の返り値を渡すことになってしまうので、decrement
