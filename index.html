@@ -16,12 +16,21 @@
       "use strict";
       {
         const Menu = (props) => {
-          const [count, seCount] = React.useState(0);
+          const [count, setCount] = React.useState(0);
 
+          const decrement = () => {
+            setCount(count -1);
+          };
+
+          const increment = () => {
+            setCount(count +1);
+          };
+
+          //decrement()の場合は、関数の返り値を渡すことになってしまうので、decrement
           return (
             <li>
-              <button>-</button>
-              <button>+</button>
+              <button onClick={decrement}>-</button>
+              <button onClick={increment}>+</button>
               {props.name}({props.price}円 × {count}個)
             </li>
           );
