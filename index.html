@@ -18,7 +18,7 @@
         const Menu = (props) => {
           const decrement = () => {
             // App componentで関数を作ってここで実行
-            props.onDecrement();
+            props.onDecrement(props.menuId);
 
           };
 
@@ -37,7 +37,7 @@
         };
         //コンポーネントは必ず大文字から始める
         const App = () => {
-          const [counts, setCounts] = React.useState([0,0,0]);
+          const [counts, setCounts] = React.useState([5,5,5]);
           const menus = [
             { id: 0, name: "牛丼", price: 400 },
             { id: 1, name: "カレー", price: 500 },
@@ -48,11 +48,7 @@
             // console.log('マイナスボタン実行')
             const newCounts = [...counts];
             newCounts[menuId]--;
-            setCounts(newCounts);
-
-
-
-
+              setCounts(newCounts);
           };
 
           const incrementMenu = () => {
@@ -67,6 +63,7 @@
           const menuItems = menus.map((menu) => {
             return <Menu 
             key={menu.id}
+            menuId={menu.id}
             count={counts[menu.id]} 
             name={menu.name} 
             price={menu.price} 
