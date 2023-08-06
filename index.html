@@ -19,11 +19,10 @@
           const decrement = () => {
             // App componentで関数を作ってここで実行
             props.onDecrement(props.menuId);
-
           };
 
           const increment = () => {
-            props.onIncrement();
+            props.onIncrement(props.menuId);
           };
 
           //decrement()の場合は、関数の返り値を渡すことになってしまうので、decrement
@@ -37,7 +36,7 @@
         };
         //コンポーネントは必ず大文字から始める
         const App = () => {
-          const [counts, setCounts] = React.useState([5,5,5]);
+          const [counts, setCounts] = React.useState([5, 5, 5]);
           const menus = [
             { id: 0, name: "牛丼", price: 400 },
             { id: 1, name: "カレー", price: 500 },
@@ -46,29 +45,37 @@
 
           const decrementMenu = (menuId) => {
             // console.log('マイナスボタン実行')
-            const newCounts = [...counts];
-            newCounts[menuId]--;
+            if (counts[menuId] > 0) {
+              const newCounts = [...counts];
+              newCounts[menuId]--;
               setCounts(newCounts);
+            }
           };
 
-          const incrementMenu = () => {
-            console.log('プラスボタン実行')
+          const incrementMenu = (menuId) => {
+            // console.log("プラスボタン実行");
+            const newCounts = [...counts];
+            newCounts[menuId]++;
+            setCounts(newCounts);
           };
-          
-          const total = 
-            (menus[0].price * counts[0]) +
-            (menus[1].price * counts[1]) +
-            (menus[2].price * counts[2]);
+
+          const total =
+            menus[0].price * counts[0] +
+            menus[1].price * counts[1] +
+            menus[2].price * counts[2];
 
           const menuItems = menus.map((menu) => {
-            return <Menu 
-            key={menu.id}
-            menuId={menu.id}
-            count={counts[menu.id]} 
-            name={menu.name} 
-            price={menu.price} 
-            onDecrement={decrementMenu}
-            onIncrement={incrementMenu}/>;
+            return (
+              <Menu
+                key={menu.id}
+                menuId={menu.id}
+                count={counts[menu.id]}
+                name={menu.name}
+                price={menu.price}
+                onDecrement={decrementMenu}
+                onIncrement={incrementMenu}
+              />
+            );
           });
 
           return (
