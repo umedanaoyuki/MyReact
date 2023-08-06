@@ -16,16 +16,10 @@
       "use strict";
       {
         const Menu = (props) => {
-          // const [count, setCount] = React.useState(0);
-
           const decrement = () => {
-          //   if (count > 0 ){
-          //   setCount(count -1)
-          // }
           };
 
           const increment = () => {
-            // setCount(count +1);
           };
 
           //decrement()の場合は、関数の返り値を渡すことになってしまうので、decrement
@@ -39,7 +33,7 @@
         };
         //コンポーネントは必ず大文字から始める
         const App = () => {
-          const [counts, setCounts] = React.useState([1,1,1]);
+          const [counts, setCounts] = React.useState([0,0,0]);
           const menus = [
             { id: 0, name: "牛丼", price: 400 },
             { id: 1, name: "カレー", price: 500 },
