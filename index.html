@@ -17,6 +17,9 @@
       {
         const Menu = (props) => {
           const decrement = () => {
+            // App componentで関数を作ってここで実行
+            props.onDecrement();
+
           };
 
           const increment = () => {
@@ -40,6 +43,10 @@
             { id: 2, name: "サラダ", price: 300 },
           ];
 
+          const decrementMenu = () => {
+            console.log('マイナスボタン実行')
+          };
+
           const total = 
             (menus[0].price * counts[0]) +
             (menus[1].price * counts[1]) +
@@ -50,7 +57,8 @@
             key={menu.id}
             count={counts[menu.id]} 
             name={menu.name} 
-            price={menu.price} />;
+            price={menu.price} 
+            onDecrement={decrementMenu}/>;
           });
 
           return (
