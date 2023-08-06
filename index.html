@@ -23,6 +23,7 @@
           };
 
           const increment = () => {
+            props.onIncrement();
           };
 
           //decrement()の場合は、関数の返り値を渡すことになってしまうので、decrement
@@ -43,10 +44,21 @@
             { id: 2, name: "サラダ", price: 300 },
           ];
 
-          const decrementMenu = () => {
-            console.log('マイナスボタン実行')
+          const decrementMenu = (menuId) => {
+            // console.log('マイナスボタン実行')
+            const newCounts = [...counts];
+            newCounts[menuId]--;
+            setCounts(newCounts);
+
+
+
+
           };
 
+          const incrementMenu = () => {
+            console.log('プラスボタン実行')
+          };
+          
           const total = 
             (menus[0].price * counts[0]) +
             (menus[1].price * counts[1]) +
@@ -58,7 +70,8 @@
             count={counts[menu.id]} 
             name={menu.name} 
             price={menu.price} 
-            onDecrement={decrementMenu}/>;
+            onDecrement={decrementMenu}
+            onIncrement={incrementMenu}/>;
           });
 
           return (
